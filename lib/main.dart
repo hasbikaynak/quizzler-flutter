@@ -25,6 +25,8 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  List<Widget> iconList = [];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -61,6 +63,12 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
+                setState(() {
+                  iconList.add(Icon(
+                    Icons.check,
+                    color: Colors.green,
+                  ));
+                });
                 //The user picked true.
               },
             ),
@@ -84,12 +92,13 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
-        //TODO: Add a Row here as your score keeper
+        Row(
+          children: iconList,
+        ),
       ],
     );
   }
 }
-
 /*
 question1: 'You can lead a cow down stairs but not up stairs.', false,
 question2: 'Approximately one quarter of human bones are in the feet.', true,
